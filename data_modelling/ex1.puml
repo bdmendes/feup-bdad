@@ -1,0 +1,64 @@
+@startuml f1
+
+class Country {
+
+}
+'Avoid redundancy; allow unique key'
+
+class CarBrand {
+    name,
+    points,
+}
+
+class Car {
+    weight,
+    horsePower,
+    maxSpeed,
+}
+
+class Pilot {
+    name,
+    adress,
+    birtYear,
+    point,
+}
+
+class Season {
+    year,
+}
+
+class Race {
+    numberOfLaps,
+}
+
+class Circuit {
+    name,
+    local,
+    length,
+}
+
+class Participation {
+    startPos,
+    endPos,
+}
+
+class RaceQuit {
+    reason,
+    lap,
+}
+
+CarBrand --* "1" Country
+Pilot --* "1" Country
+Circuit --* "1" Country
+CarBrand "1" *--* "1..*" Car
+Car "1" *--* "1..*" Pilot
+Season "1" *--* "1..*" Race
+Race "0..2" *--* "1" Circuit
+Race --* "2..*" Pilot
+(Race, Pilot) .. Participation
+
+(Race, Pilot) .. RaceQuit
+'Alternative: Move RaceQuit attributes to Participation'
+
+@enduml
+
