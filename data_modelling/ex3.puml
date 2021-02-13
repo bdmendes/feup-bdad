@@ -1,0 +1,46 @@
+@startuml bank
+
+class Client {
+    name,
+    adress,
+    phone,
+}
+
+class ZipCode {
+
+}
+
+class City {
+
+}
+
+class Account {
+    number,
+    balance,
+}
+
+class AccountType {
+
+}
+
+class Transaction {
+    amount,
+    date,
+}
+
+class TransactionType {
+
+}
+
+class AccountOwnership {
+    order,
+}
+
+(Client, Account) . AccountOwnership
+Client "0..*" <-> "1" ZipCode
+Client "0..*" <-> "1" City
+Account "0..*" <--> "1" AccountType
+(Account, Account) . Transaction
+Transaction "0..*" <--> "1" TransactionType
+
+@enduml

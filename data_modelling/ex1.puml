@@ -47,15 +47,15 @@ class RaceQuit {
     lap,
 }
 
-CarBrand --* "1" Country
-Pilot --* "1" Country
-Circuit --* "1" Country
-CarBrand "1" *--* "1..*" Car
-Car "1" *--* "1..*" Pilot
-Season "1" *--* "1..*" Race
-Race "0..2" *--* "1" Circuit
-Race --* "2..*" Pilot
-(Race, Pilot) .. Participation
+CarBrand -> "1" Country
+Pilot -> "1" Country
+Circuit -> "1" Country
+CarBrand "1" <-> "1..*" Car
+Car "1" <-> "1..>" Pilot
+Season "1" <-> "1..*" Race
+Race "0..2" <-> "1" Circuit
+Race -> "2..*" Pilot
+(Race, Pilot) . Participation
 
 (Race, Pilot) .. RaceQuit
 'Alternative: Move RaceQuit attributes to Participation'

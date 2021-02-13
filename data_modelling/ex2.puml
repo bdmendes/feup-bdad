@@ -1,0 +1,58 @@
+@startuml garden
+
+class Gardener {
+
+}
+
+class Client {
+    name,
+    adress,
+    taxID,
+}
+
+class City {
+
+}
+
+class Garden {
+    name,
+    adress,
+    area,
+}
+
+class GardenResponsability {
+    ownsGarden,
+}
+
+class Plant {
+    area,
+    name,
+    cientificName,
+}
+
+class Plantation {
+    numberOfPlants,
+}
+
+class PlantPlague {
+
+}
+
+class Season {
+    startDate,
+    endDate,
+}
+
+class PlagueTreatment {
+
+}
+
+Plant -> "0..*" PlantPlague
+Gardener "0..*" <-> "0..*" Client
+(Garden, Client) . GardenResponsability
+(Plant, Garden) . Plantation
+(PlantPlague, Season) . PlagueTreatment
+Garden "0..*" <-> "1" City
+Client "0..*" <-> "1" City
+
+@enduml
