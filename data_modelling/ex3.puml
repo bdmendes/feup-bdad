@@ -38,9 +38,9 @@ class AccountOwnership {
 
 (Client, Account) . AccountOwnership
 Client "0..*" <-> "1" ZipCode
-Client "0..*" <-> "1" City
-Account "0..*" <--> "1" AccountType
-(Account, Account) . Transaction
-Transaction "0..*" <--> "1" TransactionType
+ZipCode "1..*" <-> "1" City
+Account "0..*" <-> "1" AccountType
+Transaction "0..*" <-> "2" Account
+Transaction "0..*" <-> "1" TransactionType
 
 @enduml
