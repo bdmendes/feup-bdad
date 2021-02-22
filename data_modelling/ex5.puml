@@ -1,0 +1,67 @@
+@startuml repair_shop
+
+class Person {
+    name,
+    adress,
+    telephone,
+}
+
+class Client {
+
+}
+
+class Car {
+    plate,
+}
+
+class CarBrand {
+    name,
+}
+
+class CarModel {
+    name,
+}
+
+class Worker {
+
+}
+
+class Specialty {
+    costPerHour,
+}
+
+class Part {
+    code,
+    designation,
+    unitPrice,
+    quantity,
+}
+
+class Repair {
+    startDate,
+    endDate,
+    \cost
+}
+
+class UsedPart {
+    quantity
+}
+
+class RepairWork {
+    hours,
+    \cost
+}
+
+Car "*" <--> "1" CarModel
+CarModel "*" <--> "1" CarBrand
+Car "1..*" <--> "1" Client
+Client --|> Person
+Worker --|> Person
+Worker "*" <--> "1" Specialty
+Repair "0..*" <--> "1" Car
+Repair "1" <--> "1..*" RepairWork
+Part "1..*" <--> "1..*" CarModel
+RepairWork "*" <--> "1" Worker
+(Repair, Part) . UsedPart
+
+@enduml

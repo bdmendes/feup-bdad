@@ -47,11 +47,15 @@ class PlagueTreatment {
 
 }
 
+<> diamond
+diamond -- "0..*" PlagueTreatment
+diamond -- "0..*" PlantPlague
+diamond -- "0..* " Season
+
 Plant -> "0..*" PlantPlague
 Gardener "0..*" <-> "0..*" Client
 (Garden, Client) . GardenResponsability
 (Plant, Garden) . Plantation
-(PlantPlague, Season) . PlagueTreatment
 Garden "0..*" <-> "1" City
 Client "0..*" <-> "1" City
 
