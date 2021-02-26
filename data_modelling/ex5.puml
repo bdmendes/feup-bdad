@@ -52,6 +52,8 @@ class RepairWork {
     \cost
 }
 
+hide methods
+
 Car "*" <--> "1" CarModel
 CarModel "*" <--> "1" CarBrand
 Car "1..*" <--> "1" Client
