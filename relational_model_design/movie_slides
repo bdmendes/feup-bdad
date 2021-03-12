@@ -1,0 +1,12 @@
+BCNF Violation 1:
+studioName -> president
+
+R1: studioName, president: FINE
+R2: studioName, title, year, presAddr
+
+BCNF Violation 2:
+studioName -> presAddr
+
+R1: studioName, president: FINE
+R21: studioName, presAddr: FINE
+R22: studioName, title, year: FINE
